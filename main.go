@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-
+// 1358 9549 9391 4435
 // Receive card detailas input
 func enteredNumber() string{
 	reader := bufio.NewReader(os.Stdin)
@@ -27,7 +27,6 @@ func reverseString(str string) string{
 	}
 	
 	Data := string(byte_str)
-	fmt.Println(Data)
 	return Data
 	
  }
@@ -46,44 +45,22 @@ func convertToInt(str string) int{
 // sum values
 func sumValues(num int, total int) {
 	total += num
-	return total
 }
 
-// wfe
-func calculate(baz string) {
-	evens := 0
-	odds := 0
-	doubled := 0
-	calculated := 0
-	for i, v := range baz {
-		
-		// Skip index 0 as it contains \n and causes an error
-		if i == 0 {
-			continue;
-		}
-		if i % 2 == 0 {
-			odds = convertToInt(string(v))
-			doubled = odds * 2
-			if doubled > 9 {
-				calculated = doubled - 9
-			}else{
-				calculated = doubled
-			}
+// Seperate between out every 2nd digit and the remaining
+func seperateNumber() {
 
-			//odds += convertToInt(string(v))
-			fmt.Println("2nd's", odds)
-		}
-		if i % 2 == 1 {
-			
-			evens = convertToInt(string(v))
-			evens = evens * 2
-			fmt.Println(evens)
-		}
-		
+}
+
+// Check if card is valid
+func validateCard(odds int, evens int) {
+	validate := odds + evens
+	if validate %10 == 0 {
+		fmt.Println("CARD NUMBER PROVIDED IS VALID")
+	} else {
+		fmt.Println("NOT A VALID CARD NUMBER")
 	}
-	calculate(strOfNums)
-	fmt.Println("total of the odds: ", odds)
-	fmt.Println(calculated)
+
 }
 
 func main() {
@@ -91,6 +68,39 @@ func main() {
 	
 	var strOfNums string = reverseString(enteredNumber())
 	
+
+
+
+	sumOfEvens := 0
+	sumOfOdds := 0
+	doubled := 0
+	calculated := 0
+
+
+	for i, v := range strOfNums {
+		
+		// Skip index 0 as it contains \n and causes an error
+		if i == 0 {
+			continue;
+		}
+		if i % 2 == 0 {
+			doubled = convertToInt(string(v)) * 2
+			if doubled > 9 {
+				calculated = doubled - 9
+			}else{
+				calculated = doubled
+			}
+			sumOfOdds += calculated
+		}
+		if i % 2 == 1 {
+			sumOfEvens += convertToInt(string(v))
+		}
+		
+	}
+
+
+
 	
+	validateCard(sumOfOdds, sumOfEvens)
 	
 }
