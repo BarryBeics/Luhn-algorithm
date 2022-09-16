@@ -25,7 +25,6 @@ func reverseString(str string) string{
 	for i, j := 0, len(byte_str)-1; i < j; i, j = i+1, j-1 {
 	   byte_str[i], byte_str[j] = byte_str[j], byte_str[i]
 	}
-	
 	Data := string(byte_str)
 	return Data
 	
@@ -42,15 +41,6 @@ func convertToInt(str string) int{
 	return newInt
 }
 
-// sum values
-func sumValues(num int, total int) {
-	total += num
-}
-
-// Seperate between out every 2nd digit and the remaining
-func seperateNumber() {
-
-}
 
 // Check if card is valid
 func validateCard(odds int, evens int) {
@@ -60,7 +50,6 @@ func validateCard(odds int, evens int) {
 	} else {
 		fmt.Println("NOT A VALID CARD NUMBER")
 	}
-
 }
 
 func main() {
@@ -68,8 +57,6 @@ func main() {
 	
 	var strOfNums string = reverseString(enteredNumber())
 	
-
-
 
 	sumOfEvens := 0
 	sumOfOdds := 0
@@ -99,8 +86,6 @@ func main() {
 	}
 
 
-
-	
 	validateCard(sumOfOdds, sumOfEvens)
 	
 }
